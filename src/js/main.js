@@ -8,6 +8,7 @@ const filterToggle = document.querySelector(".filter-toggle");
 const navFilters = document.querySelector("#navFilters");
 const modal = document.querySelector("#pokemonModal");
 const modalContent = document.querySelector("#modalContent");
+const pokemonModal = new bootstrap.Modal(modal);
 
 // Rangos oficiales de la Pokédex nacional por generación.
 const GENERATIONS = {
@@ -160,7 +161,7 @@ async function cargarPokemons(filtro = "ver-todos") {
 function mostrarPokemon(data) {
   const pokeId = formatPokemonId(data.id);
   const div = document.createElement("article");
-  div.classList.add("pokemon");
+  div.classList.add("pokemon", "card", "h-100");
   div.dataset.pokemon = data.name;
   div.tabIndex = 0;
   div.setAttribute("role", "button");
@@ -203,9 +204,7 @@ function mostrarPokemon(data) {
 
 // El modal usa species y evolution-chain porque esos datos no vienen en /pokemon.
 async function abrirModal(pokemonName) {
-  modal.classList.add("modal-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-activo");
+  pokemonModal.show();
   modalContent.innerHTML = '<p class="modal-loading">Cargando detalles...</p>';
 
   try {
@@ -248,7 +247,7 @@ async function abrirModal(pokemonName) {
             ${evolutions
               .map(
                 (evolution) => `
-                  <button class="evolution-card" type="button" data-evolution="${evolution.name}">
+                  <button class="evolution-card btn" type="button" data-evolution="${evolution.name}">
                     <img src="${getSprite(evolution)}" alt="${formatName(evolution.name)}">
                     <span>#${formatPokemonId(evolution.id)}</span>
                     <strong>${formatName(evolution.name)}</strong>
@@ -271,9 +270,7 @@ async function abrirModal(pokemonName) {
 }
 
 function cerrarModal() {
-  modal.classList.remove("modal-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-activo");
+  pokemonModal.hide();
 }
 
 botonesHeader.forEach((boton) => {
