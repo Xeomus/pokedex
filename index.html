@@ -6,24 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./src/css/main.css">
 </head>
 
 <body>
 
     <header>
-        <nav class="nav">
-            <div class="nav-top">
+        <nav class="nav navbar">
+            <div class="nav-top container-fluid">
                 <img src="./src/img/logo.png" alt="Logo Pokédex">
                 <label class="search-box" for="pokemonSearch">
                     <span>Buscar</span>
-                    <input type="search" id="pokemonSearch" placeholder="Nombre del Pokémon">
+                    <input class="form-control" type="search" id="pokemonSearch" placeholder="Nombre del Pokémon">
                 </label>
-                <button class="filter-toggle" type="button" aria-expanded="false" aria-controls="navFilters">
+                <button class="filter-toggle btn" type="button" aria-expanded="false" aria-controls="navFilters">
                     Filtros
                 </button>
             </div>
-            <div class="nav-filters" id="navFilters">
+            <div class="nav-filters container-fluid" id="navFilters">
                 <div class="generation-filter" aria-label="Filtro por generación">
                     <button class="btn btn-generation active-generation" type="button" data-generation="1">Gen I</button>
                     <button class="btn btn-generation" type="button" data-generation="2">Gen II</button>
@@ -66,14 +68,19 @@
         </div>
     </main>
 
-    <div class="modal" id="pokemonModal" aria-hidden="true">
-        <div class="modal-overlay" data-close-modal></div>
-        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalPokemonName">
-            <button class="modal-close" type="button" aria-label="Cerrar modal" data-close-modal>&times;</button>
-            <div class="modal-content" id="modalContent"></div>
-        </section>
+    <div class="modal fade pokemon-modal" id="pokemonModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <section class="modal-content modal-card" aria-labelledby="modalPokemonName">
+                <button class="modal-close btn-close btn-close-white" type="button" aria-label="Cerrar modal"
+                    data-bs-dismiss="modal"></button>
+                <div class="pokemon-modal-content" id="modalContent"></div>
+            </section>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="./src/js/main.js"></script>
 </body>
 
