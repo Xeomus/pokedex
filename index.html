@@ -13,7 +13,28 @@
 
     <header>
         <nav class="nav">
-            <img src="./src/img/logo.png" alt="Logo Pokédex">
+            <div class="nav-top">
+                <img src="./src/img/logo.png" alt="Logo Pokédex">
+                <label class="search-box" for="pokemonSearch">
+                    <span>Buscar</span>
+                    <input type="search" id="pokemonSearch" placeholder="Nombre del Pokémon">
+                </label>
+                <button class="filter-toggle" type="button" aria-expanded="false" aria-controls="navFilters">
+                    Filtros
+                </button>
+            </div>
+            <div class="nav-filters" id="navFilters">
+                <div class="generation-filter" aria-label="Filtro por generación">
+                    <button class="btn btn-generation active-generation" type="button" data-generation="1">Gen I</button>
+                    <button class="btn btn-generation" type="button" data-generation="2">Gen II</button>
+                    <button class="btn btn-generation" type="button" data-generation="3">Gen III</button>
+                    <button class="btn btn-generation" type="button" data-generation="4">Gen IV</button>
+                    <button class="btn btn-generation" type="button" data-generation="5">Gen V</button>
+                    <button class="btn btn-generation" type="button" data-generation="6">Gen VI</button>
+                    <button class="btn btn-generation" type="button" data-generation="7">Gen VII</button>
+                    <button class="btn btn-generation" type="button" data-generation="8">Gen VIII</button>
+                    <button class="btn btn-generation" type="button" data-generation="9">Gen IX</button>
+                </div>
             <ul class="nav-list">
                 <li class="nav-item"><button class="btn btn-header" id="ver-todos">Ver todos</button></li>
                 <li class="nav-item"><button class="btn btn-header normal" id="normal">Normal</button></li>
@@ -34,6 +55,7 @@
                 <li class="nav-item"><button class="btn btn-header steel" id="steel">Steel</button></li>
                 <li class="nav-item"><button class="btn btn-header fairy" id="fairy">Fairy</button></li>
             </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -43,6 +65,14 @@
             </div>
         </div>
     </main>
+
+    <div class="modal" id="pokemonModal" aria-hidden="true">
+        <div class="modal-overlay" data-close-modal></div>
+        <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalPokemonName">
+            <button class="modal-close" type="button" aria-label="Cerrar modal" data-close-modal>&times;</button>
+            <div class="modal-content" id="modalContent"></div>
+        </section>
+    </div>
 
     <script src="./src/js/main.js"></script>
 </body>
