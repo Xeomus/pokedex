@@ -8,7 +8,7 @@ const filterToggle = document.querySelector(".filter-toggle");
 const navFilters = document.querySelector("#navFilters");
 const modal = document.querySelector("#pokemonModal");
 const modalContent = document.querySelector("#modalContent");
-const pokemonModal = new bootstrap.Modal(modal);
+const pokemonModal = bootstrap.Modal.getOrCreateInstance(modal);
 
 // Rangos oficiales de la Pokédex nacional por generación.
 const GENERATIONS = {
@@ -170,23 +170,25 @@ function mostrarPokemon(data) {
   div.innerHTML = `
     <p class="pokemon-id-back">#${pokeId}</p>
 
-    <div class="pokemon-imagen">
-      <img src="${getSprite(data)}" alt="Imagen de ${formatName(data.name)}">
-    </div>
-
-    <div class="pokemon-info">
-      <div class="nombre-contenedor">
-        <p class="pokemon-id">#${pokeId}</p>
-        <h2 class="pokemon-nombre">${formatName(data.name)}</h2>
+    <div class="pokemon-card-body card-body">
+      <div class="pokemon-imagen">
+        <img src="${getSprite(data)}" alt="Imagen de ${formatName(data.name)}">
       </div>
 
-      <div class="pokemon-tipos">
-        ${renderTipos(data)}
-      </div>
+      <div class="pokemon-info">
+        <div class="nombre-contenedor">
+          <p class="pokemon-id">#${pokeId}</p>
+          <h2 class="pokemon-nombre card-title">${formatName(data.name)}</h2>
+        </div>
 
-      <div class="pokemon-stats">
-        <p class="stat"><span>Altura</span>${data.height / 10} m</p>
-        <p class="stat"><span>Peso</span>${data.weight / 10} kg</p>
+        <div class="pokemon-tipos">
+          ${renderTipos(data)}
+        </div>
+
+        <div class="pokemon-stats">
+          <p class="stat"><span>Altura</span>${data.height / 10} m</p>
+          <p class="stat"><span>Peso</span>${data.weight / 10} kg</p>
+        </div>
       </div>
     </div>
   `;
@@ -226,7 +228,7 @@ async function abrirModal(pokemonName) {
 
       <div class="modal-info">
         <div>
-          <h2 id="modalPokemonName">${formatName(pokemon.name)}</h2>
+          <h2>${formatName(pokemon.name)}</h2>
           <div class="pokemon-tipos">${renderTipos(pokemon)}</div>
         </div>
 
@@ -305,14 +307,8 @@ pokemonSearch.addEventListener("input", (e) => {
 
 document.querySelector("#ver-todos").classList.add("active");
 
-modal.addEventListener("click", (e) => {
-  if (e.target.matches("[data-close-modal]")) {
-    cerrarModal();
-  }
-});
-
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.classList.contains("modal-open")) {
+  if (e.key === "Escape" && modal.classList.contains("show")) {
     cerrarModal();
   }
 });

@@ -71,9 +71,12 @@
     <div class="modal fade pokemon-modal" id="pokemonModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
             <section class="modal-content modal-card" aria-labelledby="modalPokemonName">
-                <button class="modal-close btn-close btn-close-white" type="button" aria-label="Cerrar modal"
-                    data-bs-dismiss="modal"></button>
-                <div class="pokemon-modal-content" id="modalContent"></div>
+                <div class="modal-header pokemon-modal-header">
+                    <h2 class="modal-title" id="modalPokemonName">Detalles del Pokémon</h2>
+                    <button class="modal-close btn-close btn-close-white" type="button" aria-label="Cerrar modal"
+                        data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pokemon-modal-content" id="modalContent"></div>
             </section>
         </div>
     </div>
