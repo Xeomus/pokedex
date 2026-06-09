@@ -1,0 +1,31 @@
+.app-main {
+    --bs-gutter-x: 0;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1.35rem clamp(1rem, 3vw, 2rem) 2rem;
+}
+
+.pokedex-layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 1.2rem;
+    align-items: start;
+    min-width: 0;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 760px) {
+    .app-main,
+    .pokedex-layout {
+        width: calc(100vw - 6rem);
+        max-width: calc(100vw - 6rem);
+    }
+
+    .app-main {
+        margin-right: 0;
+        margin-left: 1rem;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

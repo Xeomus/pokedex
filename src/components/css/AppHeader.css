@@ -1,0 +1,105 @@
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(20px);
+}
+
+.app-navbar {
+    padding: 1rem clamp(1rem, 3vw, 2rem);
+}
+
+.app-nav-container {
+    display: grid;
+    grid-template-columns: auto minmax(220px, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.app-logo {
+    width: 142px;
+    height: auto;
+    padding: .5rem .7rem;
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.nav-copy {
+    display: grid;
+    gap: .15rem;
+}
+
+.nav-copy span {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.nav-copy .bi {
+    margin-right: .38rem;
+}
+
+.nav-copy strong {
+    color: var(--text);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    min-height: 42px;
+    padding: .5rem .8rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    background: var(--surface);
+    font-size: .78rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.app-search {
+    grid-column: 1 / -1;
+}
+
+.app-search .input-group-text,
+.app-search .form-control {
+    min-height: 46px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 700;
+}
+
+.app-search .input-group-text {
+    border-radius: 999px 0 0 999px;
+    color: var(--muted);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.app-search .form-control {
+    border-radius: 0 999px 999px 0;
+}
+
+.app-search .form-control::placeholder {
+    color: color-mix(in srgb, var(--muted) 70%, transparent);
+}
+
+.app-search .form-control:focus {
+    border-color: color-mix(in srgb, var(--text) 28%, transparent);
+    background: var(--surface-2);
+    color: var(--text);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--text) 8%, transparent);
+}

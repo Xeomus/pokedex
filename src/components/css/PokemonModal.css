@@ -1,0 +1,44 @@
+.pokemon-modal .modal-dialog {
+    width: min(96vw, 1360px);
+    max-width: none;
+    margin: 4vh auto;
+}
+
+.pokemon-modal .modal-content {
+    max-height: 92vh;
+}
+
+.modal-backdrop {
+    background: rgba(0, 0, 0, .84);
+}
+
+.modal-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+@media screen and (max-width: 991px) {
+    .pokemon-modal .modal-content {
+        max-height: calc(100dvh - 1.5rem);
+    }
+
+    .pokemon-modal-body {
+        height: calc(100dvh - 5rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-pokedex {
+        height: auto;
+        min-height: 100%;
+    }
+
+    .modal-detail-panel,
+    .detail-section {
+        overflow: visible;
+    }
+}

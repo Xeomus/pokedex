@@ -1,0 +1,44 @@
+.pokemon-results {
+    min-width: 0;
+}
+
+.results-heading {
+    display: grid;
+    gap: .15rem;
+    margin-bottom: 1rem;
+    padding: .2rem .15rem;
+}
+
+.results-heading span {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.results-heading .bi {
+    margin-right: .38rem;
+}
+
+.results-heading strong {
+    color: var(--text);
+    font-weight: 800;
+}
+
+.pokemon-todos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.loading {
+    grid-column: 1 / -1;
+    padding: 3rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    color: var(--muted);
+    background: var(--surface);
+    font-weight: 800;
+    text-align: center;
+}

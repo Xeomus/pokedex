@@ -1,0 +1,106 @@
+.filter-sidebar {
+    position: sticky;
+    top: var(--sticky-sidebar-top);
+    max-height: calc(100vh - var(--sticky-sidebar-top) - 1rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text) 24%, transparent) transparent;
+}
+
+.filter-card {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    padding: .95rem;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+}
+
+.filter-heading {
+    display: grid;
+    gap: .15rem;
+}
+
+.filter-heading span,
+.filter-card h2 {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.filter-heading .bi,
+.filter-card h2 .bi {
+    margin-right: .38rem;
+}
+
+.filter-heading strong {
+    color: var(--text);
+    font-weight: 800;
+}
+
+.filter-card h2 {
+    margin: 0 0 .7rem;
+    font-size: .75rem;
+}
+
+.filter-section {
+    min-width: 0;
+}
+
+.generation-filter,
+.nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: contents;
+}
+
+.btn-generation,
+.btn-header {
+    width: 100%;
+    min-width: 0;
+}
+
+@media screen and (max-width: 991px) {
+    .generation-filter,
+    .nav-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .filter-card {
+        width: calc(100vw - 6rem);
+        max-width: calc(100vw - 6rem);
+    }
+
+    .generation-filter,
+    .nav-list {
+        display: flex;
+        flex-wrap: nowrap;
+        max-width: 100%;
+        overflow-x: auto;
+        padding-bottom: .25rem;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+    }
+
+    .btn-generation,
+    .btn-header {
+        flex: 0 0 auto;
+        width: auto;
+        min-width: 94px;
+        scroll-snap-align: start;
+    }
+}
