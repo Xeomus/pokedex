@@ -114,10 +114,21 @@ body {
 }
 
 .nav-copy,
-.filter-heading,
 .results-heading,
 .showcase-heading,
 .section-heading {
+    display: grid;
+    gap: .15rem;
+}
+
+.filter-heading {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: .15rem;
+}
+
+.filter-heading > div {
     display: grid;
     gap: .15rem;
 }
@@ -153,6 +164,18 @@ body {
 .nav-copy strong {
     font-size: clamp(1.1rem, 2vw, 1.45rem);
     line-height: 1;
+}
+
+.filter-close {
+    display: none;
+    place-items: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    background: var(--surface-2);
 }
 
 .theme-toggle {
@@ -204,6 +227,11 @@ body {
     background: var(--surface-2);
     color: var(--text);
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.mobile-filter-backdrop,
+.mobile-action-nav {
+    display: none;
 }
 
 .app-main {
@@ -1095,18 +1123,71 @@ body {
 }
 
 @media screen and (max-width: 760px) {
-    .app-main,
-    .pokedex-layout,
-    .filter-card {
-        width: calc(100vw - 6rem);
-        max-width: calc(100vw - 6rem);
-    }
-
     .app-main {
-        margin-right: 0;
-        margin-left: 1rem;
+        width: min(calc(100vw - 1.5rem), 430px);
+        max-width: min(calc(100vw - 1.5rem), 430px);
+        margin-right: auto;
+        margin-left: auto;
         padding-right: 0;
         padding-left: 0;
+        padding-bottom: 6.25rem;
+    }
+
+    .pokedex-layout {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .mobile-filter-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        width: 100%;
+        border: 0;
+        background: rgba(0, 0, 0, .34);
+    }
+
+    .mobile-action-nav {
+        position: fixed;
+        bottom: .75rem;
+        left: 50%;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .5rem;
+        width: min(calc(100vw - 1.5rem), 430px);
+        padding: .5rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--surface) 92%, transparent);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        transform: translateX(-50%);
+    }
+
+    .mobile-action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .38rem;
+        min-width: 0;
+        min-height: 44px;
+        padding: .55rem .6rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        color: var(--muted);
+        background: transparent;
+        font-size: .74rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .mobile-action-button.active,
+    .mobile-action-button:hover {
+        border-color: color-mix(in srgb, var(--text) 16%, transparent);
+        color: var(--text);
+        background: var(--surface-2);
     }
 
     .app-logo {
@@ -1118,12 +1199,45 @@ body {
     }
 
     .theme-toggle {
-        min-height: 38px;
-        padding: .45rem .65rem;
+        display: none;
     }
 
-    .theme-toggle-text {
+    .filter-sidebar {
         display: none;
+        position: fixed;
+        bottom: 5.25rem;
+        left: 50%;
+        z-index: 35;
+        width: min(calc(100vw - 1.5rem), 430px);
+        max-height: min(68dvh, 520px);
+        overflow: visible;
+        transform: translateX(-50%);
+    }
+
+    .filter-sidebar.mobile-panel-active {
+        display: block;
+    }
+
+    .filter-card {
+        width: 100%;
+        max-width: 100%;
+        max-height: min(68dvh, 520px);
+        overflow-y: auto;
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+    }
+
+    .filter-close {
+        display: grid;
+    }
+
+    .filter-section {
+        display: none;
+    }
+
+    .mobile-panel-generation .generation-section,
+    .mobile-panel-type .type-section {
+        display: block;
     }
 
     .pokemon-todos,
@@ -1137,21 +1251,17 @@ body {
 
     .generation-filter,
     .nav-list {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         max-width: 100%;
-        overflow-x: auto;
-        padding-bottom: .25rem;
-        scroll-snap-type: x proximity;
-        scrollbar-width: thin;
+        overflow: visible;
+        padding-bottom: 0;
     }
 
     .btn-generation,
     .btn-header {
-        flex: 0 0 auto;
-        width: auto;
-        min-width: 94px;
-        scroll-snap-align: start;
+        width: 100%;
+        min-width: 0;
     }
 
     .pokemon-card,

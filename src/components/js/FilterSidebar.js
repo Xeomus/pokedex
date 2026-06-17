@@ -17,6 +17,10 @@ export default {
       type: String,
       required: true,
     },
+    activeMobilePanel: {
+      type: String,
+      default: "",
+    },
   },
-  emits: ["select-generation", "select-type"],
+  emits: ["close-mobile-panel", "select-generation", "select-type"],
 };

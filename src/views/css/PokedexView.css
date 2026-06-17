@@ -15,17 +15,76 @@
     max-width: 100%;
 }
 
-@media screen and (max-width: 760px) {
-    .app-main,
-    .pokedex-layout {
-        width: calc(100vw - 6rem);
-        max-width: calc(100vw - 6rem);
-    }
+.mobile-filter-backdrop,
+.mobile-action-nav {
+    display: none;
+}
 
+@media screen and (max-width: 760px) {
     .app-main {
-        margin-right: 0;
-        margin-left: 1rem;
+        width: min(calc(100vw - 1.5rem), 430px);
+        max-width: min(calc(100vw - 1.5rem), 430px);
+        margin-right: auto;
+        margin-left: auto;
         padding-right: 0;
         padding-left: 0;
+        padding-bottom: 6.25rem;
+    }
+
+    .pokedex-layout {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .mobile-filter-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        width: 100%;
+        border: 0;
+        background: rgba(0, 0, 0, .34);
+    }
+
+    .mobile-action-nav {
+        position: fixed;
+        bottom: .75rem;
+        left: 50%;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .5rem;
+        width: min(calc(100vw - 1.5rem), 430px);
+        padding: .5rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--surface) 92%, transparent);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        transform: translateX(-50%);
+    }
+
+    .mobile-action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: .38rem;
+        min-width: 0;
+        min-height: 44px;
+        padding: .55rem .6rem;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        color: var(--muted);
+        background: transparent;
+        font-size: .74rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .mobile-action-button.active,
+    .mobile-action-button:hover {
+        border-color: color-mix(in srgb, var(--text) 16%, transparent);
+        color: var(--text);
+        background: var(--surface-2);
     }
 }

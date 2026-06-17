@@ -15,6 +15,8 @@
           :types="types"
           :current-generation="currentGeneration"
           :current-filter="currentFilter"
+          :active-mobile-panel="activeMobileFilter"
+          @close-mobile-panel="closeMobileFilter"
           @select-generation="selectGeneration"
           @select-type="selectType"
         />
@@ -28,6 +30,39 @@
         />
       </div>
     </main>
+
+    <button
+      v-if="activeMobileFilter"
+      class="mobile-filter-backdrop"
+      type="button"
+      aria-label="Close filters"
+      @click="closeMobileFilter"
+    ></button>
+
+    <nav class="mobile-action-nav" aria-label="Mobile navigation">
+      <button
+        class="mobile-action-button"
+        :class="{ active: activeMobileFilter === 'generation' }"
+        type="button"
+        @click="openMobileFilter('generation')"
+      >
+        <i class="bi bi-calendar3" aria-hidden="true"></i>
+        <span>Gen</span>
+      </button>
+      <button
+        class="mobile-action-button"
+        :class="{ active: activeMobileFilter === 'type' }"
+        type="button"
+        @click="openMobileFilter('type')"
+      >
+        <i class="bi bi-tags" aria-hidden="true"></i>
+        <span>Tipos</span>
+      </button>
+      <button class="mobile-action-button" type="button" @click="toggleTheme" :aria-label="themeLabel">
+        <i :class="['bi', theme === 'light' ? 'bi-sun-fill' : 'bi-moon-stars-fill']" aria-hidden="true"></i>
+        <span>{{ theme === 'light' ? 'Dark' : 'Light' }}</span>
+      </button>
+    </nav>
 
     <PokemonModal
       ref="pokemonModal"

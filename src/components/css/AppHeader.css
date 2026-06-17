@@ -103,3 +103,9 @@
     color: var(--text);
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--text) 8%, transparent);
 }
+
+@media screen and (max-width: 760px) {
+    .theme-toggle {
+        display: none;
+    }
+}

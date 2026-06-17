@@ -31,6 +31,7 @@ export default {
       modalError: "",
       loadRequestId: 0,
       modalRequestId: 0,
+      activeMobileFilter: "",
     };
   },
   computed: {
@@ -68,6 +69,12 @@ export default {
     toggleTheme() {
       this.theme = this.theme === "light" ? "dark" : "light";
     },
+    openMobileFilter(panel) {
+      this.activeMobileFilter = this.activeMobileFilter === panel ? "" : panel;
+    },
+    closeMobileFilter() {
+      this.activeMobileFilter = "";
+    },
     resetModal() {
       this.selectedPokemon = null;
       this.modalLoading = false;
@@ -75,10 +82,12 @@ export default {
     },
     selectGeneration(generationId) {
       this.currentGeneration = generationId;
+      this.closeMobileFilter();
       this.loadPokemon();
     },
     selectType(typeId) {
       this.currentFilter = typeId;
+      this.closeMobileFilter();
     },
     async loadPokemon() {
       const requestId = ++this.loadRequestId;
